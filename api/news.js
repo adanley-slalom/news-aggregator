@@ -1,7 +1,11 @@
 const axios = require('axios');
 const xml2js = require('xml2js');
+const { isPaywalledSource } = require('../shared/paywallFilter');
 
 const parser = new xml2js.Parser();
+
+// Check if paywall filtering is enabled (default: true)
+const FILTER_PAYWALLED = process.env.FILTER_PAYWALLED !== 'false';
 
 // Cache for news articles (refresh every 30 minutes)
 let newsCache = {
@@ -59,6 +63,7 @@ function cleanGoogleTitle(title) {
 // Fetch news from Google News RSS feeds
 async function fetchNewsFromFeeds() {
   const articles = [];
+  let paywallFilteredCount = 0;
 
   for (const { category, topic } of googleNewsFeeds) {
     const feedUrl = `https://news.google.com/rss/headlines/section/topic/${topic}?${GOOGLE_NEWS_PARAMS}`;
@@ -79,6 +84,12 @@ async function fetchNewsFromFeeds() {
         const source = item.source?.[0]?._?.trim() || 'Google News';
 
         if (rawTitle && rawTitle.length > 0) {
+          // Filter out paywalled articles if enabled
+          if (FILTER_PAYWALLED && isPaywalledSource(source)) {
+            paywallFilteredCount++;
+            return;
+          }
+
           articles.push({
             id: `${topic}-${index}`,
             title: cleanGoogleTitle(rawTitle).substring(0, 200),
@@ -93,6 +104,10 @@ async function fetchNewsFromFeeds() {
     } catch (error) {
       console.error(`Error fetching from ${feedUrl}:`, error.message);
     }
+  }
+
+  if (FILTER_PAYWALLED && paywallFilteredCount > 0) {
+    console.log(`Filtered ${paywallFilteredCount} paywalled articles`);
   }
 
   return articles;

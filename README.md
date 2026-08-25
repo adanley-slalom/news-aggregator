@@ -18,6 +18,7 @@ View the live application at: https://news-aggregator-plum-phi.vercel.app/
 - **Category Filtering** - Toggle 8 news categories (U.S., World, Business, Technology, Entertainment, Sports, Science, Health)
 - **Click-to-Read** - Open full articles in new tabs
 - **Responsive Design** - Treemap dynamically recalculates and adapts to any window size; works seamlessly on desktop, tablet, and mobile devices with automatic layout reflow
+- **Paywall Filtering** - Articles from known paywalled publishers are automatically excluded (configurable via `FILTER_PAYWALLED` env var)
 - **Performance Caching** - News cached for 30 minutes to reduce API calls
 - **Vercel Compatible** - Deploy backend as serverless functions, frontend as static site
 
