@@ -186,11 +186,23 @@ const NewsAggregator = ({ articles, visibleCategories, setVisibleCategories, sho
     return category.charAt(0).toUpperCase() + category.slice(1);
   };
 
+  const getHeadlineDate = () => {
+    const date = new Date();
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    const dayName = dayNames[date.getDay()];
+    const monthName = monthNames[date.getMonth()];
+    const dateNum = date.getDate();
+    
+    return `Top Headlines for ${dayName}, ${monthName} ${dateNum}`;
+  };
+
   return (
     <div className="news-aggregator">
       <header className="header">
         <h1>News Aggregator</h1>
-        <span className="article-count">Today's Top Headlines</span>
+        <span className="article-count">{getHeadlineDate()}</span>
       </header>
 
       <div className="container" ref={containerRef}>
