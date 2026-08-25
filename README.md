@@ -152,9 +152,6 @@ The client runs on `http://localhost:3000` and proxies API requests to `http://l
 - No sensitive data needed for this app
 - For future API keys, add to Vercel project settings → Environment Variables
 
-## License
-
-MIT
 ## News Sources
 
 The backend fetches from Google News RSS feeds with topic-specific categories:
