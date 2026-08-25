@@ -102,14 +102,10 @@ The client runs on `http://localhost:3000` and proxies API requests to `http://l
    - Import your GitHub repository
    - Select the root folder (don't select `/client`)
 
-3. **Configure Build Settings**
-   - Build Command: `cd client && npm run build`
-   - Output Directory: `client/build`
-   - Install Command: `npm install`
-
-4. **Deploy**
-   - Vercel will automatically detect the `vercel.json` configuration
-   - The serverless function in `/api/news.js` will be deployed
+3. **Deploy**
+   - Vercel will automatically detect and use the `vercel.json` configuration file
+   - Build settings are pre-configured: Install, build, and output directories are specified in `vercel.json`
+   - The serverless function in `/api/news.js` will be deployed as an API route
    - The React app will be built and served from `/client/build`
 
 ### How It Works on Vercel
