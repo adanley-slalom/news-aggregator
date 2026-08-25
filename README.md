@@ -2,6 +2,10 @@
 
 A modern, full-stack news aggregator featuring a proportional treemap layout displaying real news headlines in an interactive card-based interface. Deployable to Vercel with serverless backend functions.
 
+## Live Demo
+
+View the live application at: https://news-aggregator-plum-phi.vercel.app/
+
 ## Features
 
 - **Dynamic Treemap Layout** - Cards scale proportionally based on 8 news categories
