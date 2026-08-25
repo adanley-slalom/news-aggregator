@@ -117,6 +117,8 @@ The client runs on `http://localhost:3000` and proxies API requests to `http://l
 ## Project Structure
 ```
 .
+├── api/                 # Vercel serverless functions
+│   └── news.js
 ├── client/              # React frontend
 │   ├── src/
 │   │   ├── App.js       # Main component
@@ -127,8 +129,8 @@ The client runs on `http://localhost:3000` and proxies API requests to `http://l
 ├── server/              # Express server (for local dev only)
 │   ├── server.js
 │   └── package.json
-├── api/                 # Vercel serverless functions
-│   └── news.js
+├── shared/              # Shared modules
+│   └── paywallFilter.js # Paywall publisher filter
 ├── vercel.json          # Vercel configuration
 ├── package.json         # Root configuration
 └── README.md
