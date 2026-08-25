@@ -130,13 +130,27 @@ const NewsAggregator = ({ articles, visibleCategories, setVisibleCategories, sho
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const width = containerRef.current.clientWidth;
-    const height = containerRef.current.clientHeight;
-    
-    // Descending sizes: biggest top-left to smallest bottom-right
-    const values = Array.from({length: visibleArticles.length}, (_, i) => visibleArticles.length - i);
-    const newLayout = treemap(values, width, height);
-    setLayout(newLayout);
+    const calculateLayout = () => {
+      const width = containerRef.current.clientWidth;
+      const height = containerRef.current.clientHeight;
+      
+      // Descending sizes: biggest top-left to smallest bottom-right
+      const values = Array.from({length: visibleArticles.length}, (_, i) => visibleArticles.length - i);
+      const newLayout = treemap(values, width, height);
+      setLayout(newLayout);
+    };
+
+    // Calculate layout immediately
+    calculateLayout();
+
+    // Recalculate layout when container resizes
+    const resizeObserver = new ResizeObserver(() => {
+      calculateLayout();
+    });
+
+    resizeObserver.observe(containerRef.current);
+
+    return () => resizeObserver.disconnect();
   }, [visibleArticles]);
 
   // Auto-size text to fit each card. A ResizeObserver re-fits a headline
