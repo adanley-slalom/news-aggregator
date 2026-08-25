@@ -168,6 +168,12 @@ Articles are cached for 30 minutes and updated automatically.
 - Firefox (latest)
 - Safari (latest)
 
+## Development
+
+### Planned Features
+
+See [paywall-instructions.md](paywall-instructions.md) for implementation details on filtering paywalled articles from the news feed.
+
 ## License
 
 MIT
