@@ -17,6 +17,10 @@ View the live application at: https://news-aggregator-plum-phi.vercel.app/
 - **Performance Caching** - News cached for 30 minutes to reduce API calls
 - **Vercel Compatible** - Deploy backend as serverless functions, frontend as static site
 
+## Inspiration
+
+This project is inspired by Newsmap, a pioneering Flash-based news visualization website created by Marcos Weskamp in 2004. Newsmap transformed headlines from Google News into a dynamic treemap, using color-coded tiles and proportional sizing to visually represent the relative prominence of news stories around the world. Rather than presenting news as a traditional list, it revealed patterns, trends, and editorial emphasis through a single, easily scannable interface.
+
 ## Tech Stack
 
 **Backend:**
