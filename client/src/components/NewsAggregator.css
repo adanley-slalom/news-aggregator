@@ -1,0 +1,153 @@
+.news-aggregator {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #ffffff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: #222;
+  color: white;
+  height: 60px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.article-count {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: #222;
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+  overflow: hidden;
+  color: white;
+  font-weight: 400;
+}
+
+.news-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transform: scale(1.02);
+}
+
+.news-headline {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 400;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  flex: 1;
+  /* Allow the flex item to shrink below its content size so its measured
+     clientWidth/clientHeight reflect the real available space. Without this,
+     min-height/min-width default to "auto", the box grows to fit the text,
+     and autoSizeText reads an inflated size, picking a font that gets clipped. */
+  min-height: 0;
+  min-width: 0;
+}
+
+.news-source {
+  font-size: 11px;
+  margin-top: auto;
+  padding-top: 6px;
+  opacity: 0.85;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: #222;
+  border-top: none;
+  height: 60px;
+  overflow-x: auto;
+}
+
+.category-filters {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  user-select: none;
+  color: white;
+}
+
+.filter-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+.filter-label:hover {
+  opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header {
+    height: 50px;
+    padding: 10px 20px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .footer {
+    height: 50px;
+    padding: 10px 20px;
+  }
+
+  .news-card {
+    padding: 10px;
+  }
+
+  .news-headline {
+    font-size: 14px;
+  }
+
+  .category-filters {
+    gap: 15px;
+  }
+
+  .filter-label {
+    font-size: 12px;
+  }
+}
